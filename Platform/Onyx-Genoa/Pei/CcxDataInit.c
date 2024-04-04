@@ -1,4 +1,4 @@
-/* Copyright 2021-2023 Advanced Micro Devices, Inc. All rights reserved. */
+/* Copyright 2021-2024 Advanced Micro Devices, Inc. All rights reserved. */
 /**
  * @file  CcxDataInit.c
  * @brief Initialize Ccx data prior to openSIL execution..
@@ -9,11 +9,10 @@
 #include <Library/PcdLib.h>
 #include <Sil-api.h>
 #include <CcxClass-api.h>
-#include <Library/AmdPspBaseLibV2.h>
 #include <CcxMicrocodePatch.h>
+#include <Library/AmdDirectoryBaseLib.h>
 #include <Library/PeiServicesLib.h>
 #include <Library/BaseMemoryLib.h>
-#include <Library/MemRestore.h>
 
 extern EFI_GUID gPeiOpenSilCcxDownCoreDataGuid;
 
@@ -54,24 +53,12 @@ SetCcxData (
   CcxData->CcxInputBlock.AmdDownCoreMode                = PcdGet8(PcdAmdDownCoreMode);
   CcxData->CcxInputBlock.AmdCcdMode                     = PcdGet8(PcdAmdCcdMode);
   CcxData->CcxInputBlock.AmdSmtMode                     = PcdGet8(PcdAmdSmtMode);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[0]               = PcdGet16(PcdAmdCoreDisCcd0);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[1]               = PcdGet16(PcdAmdCoreDisCcd1);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[2]               = PcdGet16(PcdAmdCoreDisCcd2);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[3]               = PcdGet16(PcdAmdCoreDisCcd3);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[4]               = PcdGet16(PcdAmdCoreDisCcd4);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[5]               = PcdGet16(PcdAmdCoreDisCcd5);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[6]               = PcdGet16(PcdAmdCoreDisCcd6);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[7]               = PcdGet16(PcdAmdCoreDisCcd7);
   CcxData->CcxInputBlock.AmdIbrsEn                      = PcdGetBool(PcdAmdIbrsEn);
   CcxData->CcxInputBlock.AmdEnvironmentFlag             = PcdGet32(PcdAmdEnvironmentFlag);
   CcxData->CcxInputBlock.AmdBranchSampling              = PcdGetBool(PcdAmdBranchSampling);
   CcxData->CcxInputBlock.AmdSnpMemCover                 = PcdGet8(PcdAmdSnpMemCover);
   CcxData->CcxInputBlock.AmdVmplEnable                  = PcdGetBool(PcdAmdVmplEnable);
   CcxData->CcxInputBlock.AmdSnpMemSize                  = PcdGet32 (PcdAmdSnpMemSize);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[8]               = PcdGet16(PcdAmdCoreDisCcd8);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[9]               = PcdGet16(PcdAmdCoreDisCcd9);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[10]              = PcdGet16(PcdAmdCoreDisCcd10);
-  CcxData->CcxInputBlock.AmdCoreDisCcd[11]              = PcdGet16(PcdAmdCoreDisCcd11);
   CcxData->CcxInputBlock.AmdGameMode                    = PcdGetBool(PcdAmdGameMode);
   CcxData->CcxInputBlock.AmdCStateMode                  = PcdGet8(PcdAmdCStateMode);
   CcxData->CcxInputBlock.AmdCc6Ctrl                     = PcdGet8(PcdAmdCc6Ctrl);

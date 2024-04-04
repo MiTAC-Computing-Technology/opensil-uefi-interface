@@ -1,4 +1,4 @@
-/* Copyright 2021-2023 Advanced Micro Devices, Inc. All rights reserved. */
+/* Copyright 2021-2024 Advanced Micro Devices, Inc. All rights reserved. */
 /**
  * @file  NbioDataInit.c
  * @brief Initialize NBIO data prior to openSIL execution.
@@ -285,7 +285,6 @@ SetFchData (
   FchData->LpcClockDriveStrengthFallTime = PcdGet8 (PcdLpcClockDriveStrengthFallTime);
   FchData->WdtEnable                     = PcdGetBool (PcdFchWdtEnable);
   FchData->SerialIrqEnable               = PcdGetBool (PcdSerialIrqEnable);
-  FchData->CfgIoApicIdPreDefEnable       = PcdGetBool (PcdCfgIoApicIdPreDefineEn);
   FchData->FchIoApicId                   = PcdGet8 (PcdCfgFchIoapicId);
   FchData->FchAsfCfg.DisableSecondary        = PcdGetBool (PcdAmdFchDisableAsfSecondary);
 

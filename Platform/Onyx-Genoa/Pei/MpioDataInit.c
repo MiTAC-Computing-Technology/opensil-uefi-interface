@@ -4,19 +4,22 @@
  *
  */
 /**
- * Copyright 2021-2023 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright 2021-2024 Advanced Micro Devices, Inc. All rights reserved.
  *
  */
 
 #include <Library/DebugLib.h>
 #include <Library/PcdLib.h>
+#include <PiPei.h>
+#include <Library/BaseMemoryLib.h>
 #include <Sil-api.h>
 #include <Mpio/MpioClass-api.h>
-#include <PiPei.h>
-#include <AmdPcieComplex.h>
-#include <Ppi/NbioPcieComplexPpi.h>
-#include <Library/PeiServicesTablePointerLib.h>
-#include <string.h>
+#include <Mpio/Common/MpioStructs.h>
+
+EFI_STATUS
+SetMpioConfig (
+  MPIOCLASS_INPUT_BLK           *MpioData
+);
 
 /**
  * SetMpioData
@@ -32,12 +35,9 @@ SetMpioData (
   )
 {
   EFI_STATUS                    Status;
-  MPIOCLASS_INPUT_BLK *MpioData;
-  PEI_AMD_NBIO_PCIE_COMPLEX_PPI *NbioPcieComplexPpi;
-  DXIO_COMPLEX_DESCRIPTOR       *PcieTopologyData;
-  void                          *Source;
-  void                          *Destination;
-  CONST EFI_PEI_SERVICES        **PeiServices;
+  MPIOCLASS_INPUT_BLK           *MpioData;
+
+  Status = EFI_INVALID_PARAMETER;
 
   MpioData = (MPIOCLASS_INPUT_BLK *)SilFindStructure (SilId_MpioClass,  0);
   DEBUG ((DEBUG_ERROR, "SIL MPIO memory block is found at: 0x%x \n", MpioData));
@@ -115,13 +115,6 @@ SetMpioData (
   // A getter and setter, both are needed for this PCD.
   MpioData->AmdPciePresetMask32GtAllPort        = PcdGet32 (PcdAmdPciePresetMask32GtAllPort);
   MpioData->PcieLinkAspmAllPort                 = PcdGet8 (PcdPcieLinkAspmAllPort);
-
-  // Is this needed? Ideally we only need to pass back the assigned value to the host. 
-  // MpioData->AmdMCTPMasterSeg               = PcdGet8(PcdAmdMCTPMasterSeg);
-
-  // Is this needed? Ideally we only need to pass back the assigned value to the host.
-  // MpioData->AmdMCTPMasterID                = PcdGet16(PcdAmdMCTPMasterID);
-
   MpioData->SyncHeaderByPass                    = PcdGetBool (PcdSyncHeaderByPass);
   MpioData->CxlTempGen5AdvertAltPtcl            = PcdGetBool (PcdCxlTempGen5AdvertAltPtcl);
 
@@ -192,43 +185,9 @@ SetMpioData (
   DEBUG ((DEBUG_INFO, "SIL MPIO PCD SyncHeaderByPass: 0x%x \n", MpioData->SyncHeaderByPass));
   DEBUG ((DEBUG_INFO, "SIL MPIO PCD CxlTempGen5AdvertAltPtcl: 0x%x \n", MpioData->CxlTempGen5AdvertAltPtcl));
 
-  PeiServices = GetPeiServicesTablePointer ();
-  Status = (*PeiServices)->LocatePpi ((CONST EFI_PEI_SERVICES **)PeiServices,
-              &gAmdNbioPcieComplexPpiGuid, 0, NULL, (VOID **)&NbioPcieComplexPpi);
-  if (EFI_ERROR (Status)) {
-    DEBUG ((DEBUG_ERROR, "gAmdNbioPcieComplexPpiGuid NOT installed!!\n"));
-    assert (false);
-  }
-  NbioPcieComplexPpi->PcieGetComplex (NbioPcieComplexPpi, &PcieTopologyData);
-  Source = (void *) ((uint8_t *)PcieTopologyData - sizeof (MPIO_COMPLEX_DESCRIPTOR));
-  Destination = &MpioData->PcieTopologyData;
-  do {
-    Source = (void *) ((uint8_t *) Source + sizeof (MPIO_COMPLEX_DESCRIPTOR));
-    memcpy (Destination, Source, sizeof (MPIO_COMPLEX_DESCRIPTOR));
-    Destination = (void *) ((uint8_t *) Destination + sizeof (MPIO_COMPLEX_DESCRIPTOR));    
-  } while ((((MPIO_COMPLEX_DESCRIPTOR *)Source)->Flags & DESCRIPTOR_TERMINATE_LIST ) == 0 );
-  Source = (void *) ((uint8_t*)MpioData->PcieTopologyData.PlatformData[0].PciePortList - sizeof (MPIO_PORT_DESCRIPTOR));
-  MpioData->PcieTopologyData.PlatformData[0].PciePortList = (MPIO_PORT_DESCRIPTOR *) Destination;
-  do {
-    Source = (void *) ((uint8_t *)Source + sizeof (MPIO_PORT_DESCRIPTOR));
-    if (((MPIO_PORT_DESCRIPTOR *)Source)->EngineData.EngineType != MpioUnusedEngine) {
-      memcpy (Destination, Source, sizeof (MPIO_PORT_DESCRIPTOR));
-      Destination = (void *)((uint8_t *) Destination + sizeof (MPIO_PORT_DESCRIPTOR));
-    }
-  } while ((((MPIO_PORT_DESCRIPTOR *)Source)->Flags & DESCRIPTOR_TERMINATE_LIST ) == 0 );
-  if ((MpioData->PcieTopologyData.PlatformData[0].Flags & DESCRIPTOR_TERMINATE_LIST) == 0 ) {
-    Source = MpioData->PcieTopologyData.PlatformData[1].PciePortList - sizeof (MPIO_PORT_DESCRIPTOR);
-    MpioData->PcieTopologyData.PlatformData[1].PciePortList = (MPIO_PORT_DESCRIPTOR *) Destination;
-    do {
-      Source = (void *)((uint8_t *) Source + sizeof (MPIO_PORT_DESCRIPTOR));
-      if (((MPIO_PORT_DESCRIPTOR *)Source)->EngineData.EngineType != MpioUnusedEngine) {
-        memcpy (Destination, Source, sizeof (MPIO_PORT_DESCRIPTOR));
-        Destination = (void *)((uint8_t *) Destination + sizeof (MPIO_PORT_DESCRIPTOR));
-      }
-    } while ((((MPIO_PORT_DESCRIPTOR *)Source)->Flags & DESCRIPTOR_TERMINATE_LIST ) == 0 );
-  }
+  Status = SetMpioConfig(MpioData);
 
-  return EFI_SUCCESS;
+  return Status;
 }
 
 /**
@@ -236,7 +195,7 @@ SetMpioData (
  *
  * @brief Send Updated MPIO IP block's data to host FW
  * @return EFI_SUCCESS or EFI_NOT_FOUND
- *       EFI_SUCCESS   : Received valid address within the Host allocated memory block 
+ *       EFI_SUCCESS   : Received valid address within the Host allocated memory block
  *                       and succesfully update the PCD.
  *       EFI_NOT_FOUND : Indicates the requested block was not found
  */

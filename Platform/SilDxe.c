@@ -4,7 +4,7 @@
  *
  */
 /*
- * Copyright 2021-2023 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright 2021-2024 Advanced Micro Devices, Inc. All rights reserved.
  *
  */
 
@@ -15,7 +15,6 @@
 #include <Library/UefiLib.h>
 #include <Library/DebugLib.h>
 #include <Library/UefiBootServicesTableLib.h>
-#include <Library/MemRestore.h>
 #include <Sil-api.h>
 #include <SilCommon.h>
 #include <xSIM-api.h>

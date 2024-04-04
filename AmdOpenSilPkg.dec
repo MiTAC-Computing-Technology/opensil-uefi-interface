@@ -1,3 +1,8 @@
+#;*****************************************************************************
+#;
+#; Copyright (C) 2013-2024 Advanced Micro Devices, Inc. All rights reserved.
+#;******************************************************************************
+
 [Defines]
   DEC_SPECIFICATION     = 0x00010005
   PACKAGE_NAME          = AmdOpenSilPackage
@@ -13,9 +18,12 @@
   OpenSIL/xUSL/CommonLib
   OpenSIL/xUSL/CCX
   OpenSIL/xUSL/CCX/Common
+  OpenSIL/xUSL/FCH
+  OpenSIL/xUSL/FCH/Common
   OpenSIL/xPRF/
   SilToUefi
   Platform
+  ../../AGESA/AgesaModulePkg/Include/
 
 [LibraryClasses]
 
