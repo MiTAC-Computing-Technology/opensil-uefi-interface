@@ -54,9 +54,6 @@ SetNbioData (
   NbioData->NbioConfigData.CfgSstunlClkGating = PcdGetBool (PcdCfgSstunlClkGating);
   NbioData->NbioConfigData.CfgSyshubMgcgClkGating = PcdGetBool (PcdCfgSyshubMgcgClkGating);
   NbioData->NbioConfigData.TPHCompleterEnable = PcdGet8 (PcdTPHCompleterEnable);
-  NbioData->NbioConfigData.IoApicMMIOAddressReservedEnable = PcdGetBool (PcdCfgIoApicMMIOAddressReservedEnable);
-  NbioData->NbioConfigData.IoApicIdPreDefineEn = PcdGetBool (PcdCfgIoApicIdPreDefineEn);
-  NbioData->NbioConfigData.IoApicIdBase = PcdGet8 (PcdCfgIoApicIdBase);
   NbioData->NbioConfigData.NbifMgcgHysteresis = PcdGet8 (PcdNbifMgcgHysteresis);
   NbioData->NbioConfigData.SyshubMgcgHysteresis = PcdGet8 (PcdSyshubMgcgHysteresis);
   NbioData->NbioConfigData.IohcNonPCIBarInitDbg = PcdGetBool (PcdCfgIohcNonPCIBarInitDbg);

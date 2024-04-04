@@ -80,10 +80,7 @@
 
 [Components.IA32]
   AmdOpenSilPkg/opensil-uefi-interface/Platform/SilPei.inf
-  AmdOpenSilPkg/opensil-uefi-interface/Platform/$(SIL_BOARD_DIRECTORY)/Pei/Sil$(SIL_PLATFORM_NAME)Pei.inf {
-    <LibraryClasses>
-    AmdBaseLib|AgesaModulePkg/Library/AmdBaseLib/AmdBaseLibNoIntrinsic.inf
-  }
+  AmdOpenSilPkg/opensil-uefi-interface/Platform/$(SIL_BOARD_DIRECTORY)/Pei/Sil$(SIL_PLATFORM_NAME)Pei.inf
 
 [Components.X64]
   AmdOpenSilPkg/opensil-uefi-interface/Platform/SilDxe.inf

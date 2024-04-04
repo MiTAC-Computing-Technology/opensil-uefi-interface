@@ -24,19 +24,13 @@
   FchDataInit.c
   RcMgrDataInit.c
 
-#  uncomment when RC init call is made from openSIL FabricResourceInitLib RcMgrDataInit.c
-
 [Packages]
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
   AmdOpenSilPkg/opensil-uefi-interface/AmdOpenSilPkg.dec
-  AgesaModulePkg/AgesaModulePspPkg.dec
-  AgesaModulePkg/AgesaFamily19ModulePkg.dec
-  AgesaModulePkg/AgesaModuleNbioPkg.dec
-  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaPublicModulePkg.dec
+  AgesaPkg/AgesaPublicPkg.dec
   AgesaModulePkg/AgesaCommonModulePkg.dec
-  AgesaModulePkg/AgesaModuleCcxPkg.dec
-  AgesaModulePkg/AgesaModuleFchPkg.dec
 
 [LibraryClasses]
   PeimEntryPoint
@@ -47,16 +41,12 @@
   libAMDxSIM
   FabricResourceInitLib
   SilPeiInit
-  AmdPspBaseLibV2
   libAMDxPRF
-
-#  uncomment when RC init call is made from openSIL FabricResourceInitLib
-
+  AmdDirectoryBaseLib
+  AmdOemInitOnyxLib
 
 [Guids]
   gPeiOpenSilCcxDownCoreDataGuid
-[Ppis]
-  gAmdNbioPcieComplexPpiGuid
 
 [Pcd]
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdCfgHdAudioEnable
@@ -73,24 +63,12 @@
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdDownCoreMode
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdCcdMode
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdSmtMode
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd0
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd1
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd2
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd3
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd4
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd5
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd6
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd7
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdIbrsEn
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdEnvironmentFlag
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdBranchSampling
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdSnpMemCover
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdSnpMemSize
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdVmplEnable
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd8
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd9
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd10
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCoreDisCcd11
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdGameMode
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdL1StreamPrefetcher
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdL1StridePrefetcher
@@ -163,7 +141,6 @@
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdLpcClockDriveStrengthFallTime
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdFchWdtEnable
   gEfiAmdAgesaPkgTokenSpaceGuid.PcdSerialIrqEnable
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgIoApicIdPreDefineEn
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgFchIoapicId
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdFchDisableAsfSecondary
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdHpetEnable
@@ -333,8 +310,6 @@
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgSstunlClkGating
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgSyshubMgcgClkGating
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdTPHCompleterEnable
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgIoApicMMIOAddressReservedEnable
-  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgIoApicIdBase
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdNbifMgcgHysteresis
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSyshubMgcgHysteresis
   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgIohcNonPCIBarInitDbg
@@ -398,9 +373,5 @@
 [Ppis]
  gOpenSilxPrfServicePpiGuid #PRODUCED
 
-[Protocols]
-
 [Depex]
-  gAmdFabricGenoaDepexPpiGuid AND
-  gApobCommonServicePpiGuid AND
-  gAmdNbioPcieComplexPpiGuid
+  TRUE

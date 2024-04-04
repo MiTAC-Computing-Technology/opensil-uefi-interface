@@ -13,7 +13,6 @@
 #include <stdbool.h>
 #include <Library/DebugLib.h>
 #include <Library/PeiServicesLib.h>
-#include <Library/MemRestore.h>
 #include <Ppi/Reset2.h>
 #include <SilCommon.h>
 #include <xSIM-api.h>
@@ -137,8 +136,6 @@ void SilHandleReset(
   if (ResetType >= SilResetRequestColdImm)
   {
     (*PeiServices)->LocatePpi(PeiServices, &gEfiPeiReset2PpiGuid, 0, NULL, (VOID **) &Reset2);
-
-    AmdMemRestoreDiscardCurrentMemContext();
     if (Reset2 != NULL)
     {
       if ((ResetType == SilResetRequestColdDef) || (ResetType == SilResetRequestColdImm))

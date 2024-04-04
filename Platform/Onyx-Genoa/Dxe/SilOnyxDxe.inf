@@ -21,11 +21,8 @@
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
   AmdOpenSilPkg/opensil-uefi-interface/AmdOpenSilPkg.dec
-  AgesaModulePkg/AgesaModulePspPkg.dec
-  AgesaModulePkg/AgesaFamily19ModulePkg.dec
-  AgesaModulePkg/AgesaModuleNbioPkg.dec
-  AgesaPkg/AgesaPkg.dec
-  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AgesaModulePkg/AgesaPublicModulePkg.dec
+  AgesaPkg/AgesaPublicPkg.dec
 
 [LibraryClasses.common.DXE_DRIVER] 
   UefiLib
@@ -40,6 +37,7 @@
   libAMDxPRF
   HobLib
   BaseMemoryLib
+  AmdDirectoryBaseLib
 
 [Guids]
 
@@ -50,6 +48,7 @@
 [Protocols]
   gEfiPciIoProtocolGuid
   gOpenSilxPrfProtocolGuid
+  gEfiMpServiceProtocolGuid
 
 [Depex]
   TRUE

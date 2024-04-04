@@ -285,7 +285,6 @@ SetFchData (
   FchData->LpcClockDriveStrengthFallTime = PcdGet8 (PcdLpcClockDriveStrengthFallTime);
   FchData->WdtEnable                     = PcdGetBool (PcdFchWdtEnable);
   FchData->SerialIrqEnable               = PcdGetBool (PcdSerialIrqEnable);
-  FchData->CfgIoApicIdPreDefEnable       = PcdGetBool (PcdCfgIoApicIdPreDefineEn);
   FchData->FchIoApicId                   = PcdGet8 (PcdCfgFchIoapicId);
   FchData->FchAsfCfg.DisableSecondary        = PcdGetBool (PcdAmdFchDisableAsfSecondary);
 

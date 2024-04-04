@@ -15,7 +15,6 @@
 #include <Library/UefiLib.h>
 #include <Library/DebugLib.h>
 #include <Library/UefiBootServicesTableLib.h>
-#include <Library/MemRestore.h>
 #include <Sil-api.h>
 #include <SilCommon.h>
 #include <xSIM-api.h>

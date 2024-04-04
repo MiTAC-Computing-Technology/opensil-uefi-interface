@@ -1,12 +1,12 @@
 /**
  * @file  CcxDataInit.c
- * @brief The Host will locate a structure within the memory block
+ * @brief The Host will locate a structure within the memory block 
  *        that was assigned by an IP block
  *        Allocates the Secure Nested Paging (SNP) for Reverse Map Table (RMP)
  *
  */
 /**
- * Copyright 2021-2023 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright 2021-2022 Advanced Micro Devices, Inc. All rights reserved.
  *
  */
 
@@ -14,8 +14,8 @@
 #include <Library/PcdLib.h>
 #include <Sil-api.h>
 #include <CcxClass-api.h>
-#include <Library/AmdPspBaseLibV2.h>
 #include <xPRF-api.h>
+#include <Library/AmdDirectoryBaseLib.h>
 #include <Uefi/UefiSpec.h>
 #include <Uefi/UefiBaseType.h>
 #include <Library/UefiBootServicesTableLib.h>

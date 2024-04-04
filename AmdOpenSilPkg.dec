@@ -13,9 +13,12 @@
   OpenSIL/xUSL/CommonLib
   OpenSIL/xUSL/CCX
   OpenSIL/xUSL/CCX/Common
+  OpenSIL/xUSL/FCH
+  OpenSIL/xUSL/FCH/Common
   OpenSIL/xPRF/
   SilToUefi
   Platform
+  ../../AGESA/AgesaModulePkg/Include/
 
 [LibraryClasses]
 
