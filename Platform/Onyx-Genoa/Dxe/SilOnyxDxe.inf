@@ -24,7 +24,7 @@
   AgesaModulePkg/AgesaPublicModulePkg.dec
   AgesaPkg/AgesaPublicPkg.dec
 
-[LibraryClasses.common.DXE_DRIVER] 
+[LibraryClasses.common.DXE_DRIVER]
   UefiLib
   SilDxeInit
 
