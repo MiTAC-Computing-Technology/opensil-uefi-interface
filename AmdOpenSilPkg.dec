@@ -23,7 +23,6 @@
   OpenSIL/xPRF/
   SilToUefi
   Platform
-  ../../AGESA/AgesaModulePkg/Include/
 
 [LibraryClasses]
 
