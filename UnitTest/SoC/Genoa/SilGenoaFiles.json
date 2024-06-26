@@ -1,0 +1,138 @@
+[
+  {
+    "Platform": "Genoa",
+    "Include": [
+      "AmdOpenSilPkg\\opensil-uefi-interface\\UnitTest\\SoC\\Common\\SilCmnFiles.json"
+    ]
+  },
+  {
+    "Component": "xSIM",
+    "Description": "",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xSIM\\SoC\\F1AM50\\IpBlkListF1AM50Tp1.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xSIM\\SoC\\F1AM50\\IpBlkListF1AM50Tp2.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xSIM\\SoC\\F1AM50\\IpBlkListF1AM50Tp3.c"}
+    ]
+  },
+  {
+    "Component": "APOB",
+    "Description": "",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\APOB\\V2\\WH\\ApobV2Cmn2Wh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\APOB\\V2\\WH\\ApobVwInitWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\APOB\\V2\\WH\\ApobVwIp2IpWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\APOB\\V2\\WH\\ApobV2Wh.c"}
+    ]
+  },
+  {
+    "Component": "CCX",
+    "Description": "",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\CCX\\Zen6\\CcxResetTablesZen6.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\CCX\\Zen6\\CcxZen6.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\CCX\\Zen6\\WH\\CcxCmn2Wh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\CCX\\Zen6\\WH\\CcxInitWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\CCX\\Zen6\\WH\\CcxIp2IpWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\CCX\\Zen6\\WH\\CcxWh.c"}
+    ]
+  },
+  {
+    "Component": "DF",
+    "Description": "",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\Df4.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\Df4AcpiDomainInfo.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\Df4BaseFabricTopology.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\Df4ClkGatingInit.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\Df4FabricRegisterAcc.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\Df4FabricWdt.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\Df4PieRasInit.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\WH\\WhAbstractRegAcc.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\WH\\WhBaseFabricTopology.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\WH\\DfCmn2Wh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\WH\\DfInitWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\WH\\DfIp2IpWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\DF\\Df4\\WH\\DfWh.c"}
+    ]
+  },
+  {
+    "Component": "FCH",
+    "Description": "",
+    "Files": []
+  },
+  {
+    "Component": "MEM",
+    "Description": "Coverage for MEM IP",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\MEM\\Wh\\MemCmn2RevWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\MEM\\Wh\\MemInitWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\MEM\\Wh\\MemIp2IpWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\MEM\\Wh\\MemWh.c"}
+    ]
+  },
+  {
+    "Component": "MPIO",
+    "Description": "",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioAfterDxioInitCfgPointWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioAfterRecfgCfgPointWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioBeforeRecfgCfgPointWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioCfgPointsWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioCmn2Wh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioInitFlowWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioInitWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioIp2IpWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioLibWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioPcieWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioPortVisibilityWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioTopologyWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Mpio\\Wh\\MpioWh.c"}
+    ]
+  },
+  {
+    "Component": "NBIO",
+    "Description": "",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Nbio\\Wh\\NbioBaseInitWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Nbio\\Wh\\NbioIoApic.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Nbio\\Wh\\NbioIommu.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Nbio\\Wh\\NbioNbifInit.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Nbio\\Wh\\NbioPcieComplexDataWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Nbio\\Wh\\NbioWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\Nbio\\Wh\\PkgTypeFixups.c"}
+    ]
+  },
+  {
+    "Component": "RAS",
+    "Description": "",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RAS\\Wh\\RasCmn2Wh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RAS\\Wh\\RasInitWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RAS\\Wh\\RasIp2IpWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RAS\\Wh\\RasWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RAS\\Wh\\SocLibWh.c"}
+    ]
+  },
+  {
+    "Component": "RcMgr",
+    "Description": "",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RcMgr\\Df4\\FabricRcInitBasedOnNv4.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RcMgr\\Df4\\FabricRcManager.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RcMgr\\Df4\\WH\\FabricRcInitWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RcMgr\\Df4\\WH\\RcMgrCmn2Wh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RcMgr\\Df4\\WH\\RcMgrIp2IpWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\RcMgr\\Df4\\WH\\RcMgrWh.c"}
+    ]
+  },
+  {
+    "Component": "SMU",
+    "Description": "",
+    "Files": [
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\SMU\\Wh\\SmuCmn2Wh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\SMU\\Wh\\SmuInitWh.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\SMU\\Wh\\SmuWhIp2Ip.c"},
+      {"Name": "AmdOpenSilPkg\\opensil-uefi-interface\\openSIL\\xUSL\\SMU\\Wh\\SmuWh.c"}
+    ]
+  }
+]
